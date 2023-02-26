@@ -20,12 +20,29 @@ console.log(rudePerson2("I love dogs")); // prints "I yo love yo dogs"
 ***********************************************************************/
 
 function interrupter(interruptingWord) {
-  // Your code here
+	const cb = (sentence) => {
+		let words = sentence.split(" ");
+		let newSentence = "";
+		for (let i = 0; i < words.length; i++) {
+			if (i === words.length - 1) {
+				newSentence += words[i];
+			} else {
+				newSentence += words[i] + " " + interruptingWord + " ";
+			}
+		}
+
+		return newSentence;
+	};
+
+	return cb;
 }
 
+let rudePerson = interrupter("what"); // => returns a function
+console.log(rudePerson("how are you")); // prints "how what are what you"
+console.log(rudePerson("I like pie")); // prints "I what like what pie"
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 try {
-  module.exports = interrupter;
+	module.exports = interrupter;
 } catch (e) {
-  return null;
+	return null;
 }

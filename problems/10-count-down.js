@@ -28,12 +28,23 @@ Example 4:
 
 ***********************************************************************/
 function countDownTimer(num) {
-  // Your code here
+	const cb = () => countDownTimer(num - 1);
+
+	if (num > 0) {
+		return cb;
+	}
+
+	return "Happy New Year!";
 }
+
+let threeDays = countDownTimer(3); // returns a function
+console.log(threeDays()); // returns a function
+console.log(threeDays()); // returns a function
+console.log(threeDays()); // prints "Happy New Year!"
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 try {
-  module.exports = countDownTimer;
+	module.exports = countDownTimer;
 } catch (e) {
-  return null;
+	return null;
 }
